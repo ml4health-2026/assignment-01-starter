@@ -1,6 +1,41 @@
+import json
+import pathlib
 import pytest
 import torch
 import torch.nn as nn
+
+
+# ---------------------------------------------------------------------------
+# Notebook — written answers
+# ---------------------------------------------------------------------------
+
+class TestNotebookAnswers:
+
+    PLACEHOLDER = "> *Your answer.*"
+
+    def _markdown_cells(self):
+        nb = json.loads(pathlib.Path("notebook.ipynb").read_text())
+        return [
+            "".join(cell["source"])
+            for cell in nb["cells"]
+            if cell["cell_type"] == "markdown"
+        ]
+
+    def test_no_placeholders_remaining(self):
+        unanswered = [
+            cell[:80] for cell in self._markdown_cells()
+            if self.PLACEHOLDER in cell
+        ]
+        assert not unanswered, (
+            f"{len(unanswered)} written question(s) still contain the placeholder "
+            f"'{self.PLACEHOLDER}'. Fill in all answers in notebook.ipynb."
+        )
+
+    def test_notebook_was_executed(self):
+        nb = json.loads(pathlib.Path("notebook.ipynb").read_text())
+        code_cells = [c for c in nb["cells"] if c["cell_type"] == "code"]
+        executed = [c for c in code_cells if c.get("execution_count") is not None]
+        assert len(executed) > 0, "notebook.ipynb has no executed cells — run it before submitting."
 
 
 # ---------------------------------------------------------------------------
