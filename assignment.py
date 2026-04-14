@@ -58,7 +58,7 @@ def compute_metrics(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
 
 
 # ===========================================================================
-# Exercise 5 -- Class Imbalance
+# Exercise 4 -- Class Imbalance
 # ===========================================================================
 
 def compute_class_weights(class_counts: dict[str, int]) -> dict[str, float]:
@@ -78,7 +78,7 @@ def compute_class_weights(class_counts: dict[str, int]) -> dict[str, float]:
 
 
 # ===========================================================================
-# Exercise 2a -- Data Loading
+# Exercise 5a -- Data Loading
 # ===========================================================================
 
 def build_dataloaders(
@@ -121,7 +121,7 @@ def build_dataloaders(
 
 
 # ===========================================================================
-# Exercise 2b -- Simple CNN Baseline
+# Exercise 5b -- Simple CNN Baseline
 # ===========================================================================
 
 class SimpleCNN(nn.Module):
@@ -147,7 +147,7 @@ class SimpleCNN(nn.Module):
 
 
 # ===========================================================================
-# Exercise 2b -- Pretrained ResNet18  (provided — no changes needed)
+# Exercise 5b -- Pretrained ResNet18  (provided — no changes needed)
 # ===========================================================================
 
 def build_resnet18(num_classes: int = 4) -> nn.Module:
@@ -159,7 +159,7 @@ def build_resnet18(num_classes: int = 4) -> nn.Module:
 
 
 # ===========================================================================
-# Exercise 2c -- Training and Evaluation Loop
+# Exercise 5c -- Training and Evaluation Loop
 # ===========================================================================
 
 def run_epoch(
