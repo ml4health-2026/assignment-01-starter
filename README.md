@@ -3,6 +3,25 @@
 
 ---
 
+## Prerequisites
+
+You will need the following installed on your machine:
+
+- **git** — check with `git --version`
+- **GitHub account** — required to access and submit assignments
+- **miniconda** — recommended for managing Python environments
+
+## Setting Up Your Environment
+
+Create a dedicated conda environment for this course:
+
+```bash
+conda create -n ml4health python=3.11
+conda activate ml4health
+pip install -r requirements.txt
+```
+
+---
 ## Where to start
 
 1. **Download the dataset** — this creates a `brain_tumor_data/` folder in the repo root
