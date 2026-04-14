@@ -42,12 +42,6 @@ def set_seed(seed: int = 42) -> None:
 def compute_metrics(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
     """Compute precision, recall, and F1-score for a single class (one-vs-rest).
 
-    Formulae
-    --------
-    precision = TP / (TP + FP)
-    recall    = TP / (TP + FN)
-    F1        = 2 * precision * recall / (precision + recall)
-
     Parameters
     ----------
     tp : true positives
@@ -58,15 +52,8 @@ def compute_metrics(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
     -------
     (precision, recall, f1)  -- each rounded to 4 decimal places.
 
-    Example
-    -------
-    >>> compute_metrics(42, 8, 18)
-    (0.84, 0.7, 0.7636)
     """
-    # TODO 3a: compute precision
-    # TODO 3b: compute recall
-    # TODO 3c: compute F1  (use the precision and recall you computed above)
-    # TODO    : return (round(precision, 4), round(recall, 4), round(f1, 4))
+    # TODO: compute and return (precision, recall, f1), each rounded to 4 decimal places
     raise NotImplementedError
 
 
@@ -75,31 +62,18 @@ def compute_metrics(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
 # ===========================================================================
 
 def compute_class_weights(class_counts: dict[str, int]) -> dict[str, float]:
-    """Compute inverse-frequency class weights: w_c = N / (K * n_c).
-
-    A higher weight means the model will be penalised more for mistakes
-    on that class — useful when rare classes matter clinically.
+    """Compute inverse-frequency class weights.
 
     Parameters
     ----------
     class_counts : dict mapping class name -> number of training samples.
-        Example: {"glioma": 120, "meningioma": 240,
-                  "pituitary": 300, "no_tumor": 840}
 
     Returns
     -------
     dict mapping class name -> weight (rounded to 4 decimal places).
 
-    Example
-    -------
-    >>> compute_class_weights({"glioma": 120, "meningioma": 240,
-    ...                        "pituitary": 300, "no_tumor": 840})
-    {"glioma": 3.125, "meningioma": 1.5625, "pituitary": 1.25, "no_tumor": 0.4464}
     """
-    # TODO 5a: N = total number of samples (sum of all counts)
-    # TODO 5b: K = number of classes
-    # TODO 5c: for each class c, compute w_c = N / (K * n_c)
-    # TODO    : return a dict with the same keys, values rounded to 4 decimal places
+    # TODO: compute and return the per-class weights, rounded to 4 decimal places
     raise NotImplementedError
 
 
@@ -142,18 +116,7 @@ def build_dataloaders(
         transforms.ToTensor(),
     ])
 
-    # TODO 2a-i : load the training folder *twice* with datasets.ImageFolder --
-    #             once with train_tfms (used for the train split)
-    #             once with eval_tfms  (used for the val split, no augmentation)
-    # TODO 2a-ii: load the test folder with eval_tfms
-
-    # TODO 2a-iii: create a list of all indices, then split into train/val
-    #              use torch.randperm(n_total, generator=torch.Generator().manual_seed(seed))
-    #              val gets the first int(val_fraction * n_total) indices
-
-    # TODO 2a-iv : wrap each split in a Subset, then in a DataLoader
-    #              shuffle=True for train, shuffle=False for val and test
-
+    # TODO: load the datasets, split train into train/val using the seed, return three DataLoaders
     raise NotImplementedError
 
 
@@ -175,13 +138,11 @@ class SimpleCNN(nn.Module):
 
     def __init__(self, num_classes: int = 4) -> None:
         super().__init__()
-        # TODO 2b-i: define self.block1 as nn.Sequential(...)
-        # TODO 2b-ii: define self.block2 as nn.Sequential(...)
-        # TODO 2b-iii: define self.head  as nn.Sequential(...)
+        # TODO: define self.block1, self.block2, and self.head
         raise NotImplementedError
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        # TODO 2b-iv: pass x through block1, then block2, then head; return result
+        # TODO: forward pass through the three components
         raise NotImplementedError
 
 
@@ -240,21 +201,7 @@ def run_epoch(
         if training:
             optimizer.zero_grad()
 
-        # TODO 2c-i  : forward pass
-        #   outputs = model(images)          # shape: (batch, num_classes)
-        #   loss    = criterion(outputs, labels)
-        #   preds   = outputs.argmax(dim=1)  # predicted class index
-
-        # TODO 2c-ii : backward pass (only when training)
-        #   loss.backward()
-        #   optimizer.step()
-
-        # TODO 2c-iii: accumulate batch statistics
-        #   total_loss    += loss.item() * images.size(0)
-        #   total_correct += (preds == labels).sum().item()
-        #   total_samples += images.size(0)
-        #   all_preds.extend(preds.detach().cpu().tolist())
-        #   all_targets.extend(labels.detach().cpu().tolist())
+        # TODO: forward pass, backward pass (if training), accumulate statistics
 
     # This guard fires if the loop body was not implemented.
     # Remove it (or it will go away naturally) once the TODOs above are filled in.
