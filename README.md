@@ -5,7 +5,7 @@
 
 ## Where to start
 
-1. **Download the dataset**
+1. **Download the dataset** — this creates a `brain_tumor_data/` folder in the repo root
    ```bash
    python download_data.py
    ```

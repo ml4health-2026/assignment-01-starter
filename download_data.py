@@ -11,7 +11,7 @@ import pathlib
 
 URL = "https://github.com/ml4health-2026/assignment-01-starter/releases/download/v1.0-data/brain_tumor_data.zip"
 ZIP = pathlib.Path("brain_tumor_data.zip")
-DEST = pathlib.Path("data")
+DEST = pathlib.Path("brain_tumor_data")
 
 
 def download(url: str, dest: pathlib.Path) -> None:
