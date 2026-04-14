@@ -1,0 +1,28 @@
+# Dataset — download via: python download_data.py
+data/
+brain_tumor_data/
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+
+# Environment
+.env
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
