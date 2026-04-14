@@ -1,3 +1,6 @@
+# Solution — never push to student repo
+solution.py
+
 # Dataset — download via: python download_data.py
 data/
 brain_tumor_data/
