@@ -1,88 +1,33 @@
-# ML for Health 2026 — Assignment Template
-
-## Overview
-
-This repository is the template for assignments in the **ML for Health 2026** course.
-Each week a new assignment will be released. You will receive a link via ILIAS to accept it.
+# Assignment 1: Brain Tumor MRI Classification
+**ML for Health 2026**
 
 ---
 
-## Prerequisites
+## Where to start
 
-You will need the following installed on your machine:
-
-- **git** — check with `git --version`
-- **GitHub account** — required to access and submit assignments
-- **miniconda** — recommended for managing Python environments
-
-## Setting Up Your Environment
-
-Create a dedicated conda environment for this course:
-
-```bash
-conda create -n ml4health python=3.11
-conda activate ml4health
-pip install -r requirements.txt
-```
-
----
-
-## Accepting and Working on an Assignment
-
-1. Open the assignment link posted on **ILIAS** each week
-2. On first use, link your GitHub account to your **university ID** from the provided list
-3. A personal repository `<assignment-name>-<your-github-username>` will be created for you
-4. Clone it locally:
+1. **Download the dataset**
    ```bash
-   git clone git@github.com:ml4health-2026/<assignment-name>-<your-github-username>.git
+   python download_data.py
    ```
-5. Activate your environment and install dependencies:
+
+2. **Open `notebook.ipynb`** — this is your main working document. Work through it top to bottom. Written questions have placeholders; fill them in directly in the notebook.
+
+3. **Implement the functions in `assignment.py`** — the notebook will call them as you go. Each function has a single `# TODO` line and a docstring that fully describes what to return.
+
+4. **Check your work locally** before pushing:
    ```bash
-   conda activate ml4health
-   pip install -r requirements.txt
+   pytest tests/ -v
    ```
-6. Open `assignment.py` and complete the `TODO` sections
 
----
-
-## Testing Your Solution Locally
-
-Run the test suite locally before submitting:
-
-```bash
-pytest tests/ -v
-```
-
-Fix any failing tests before pushing.
-
----
-
-## Submitting
-
-Push to the `main` branch to submit:
-
-```bash
-git add assignment.py experiences.md
-git commit -m "Submit assignment"
-git push origin main
-```
-
-Pushing to `main` triggers an automated test run via GitHub Actions.
-**Only push to `main` when you are ready for final submission.**
-For saving work-in-progress remotely, create a separate branch.
-
-**Deadline:** Sundays at 23:59 of the same week the assignment is released.
+5. **Submit** by pushing to `main`. This triggers the automated test run.
+   Use a separate branch for work in progress — only push to `main` for final submission.
 
 ---
 
 ## Feedback
 
-For each assignment, a pull request on a `feedback` branch will be created automatically.
-Your instructors will leave inline comments there. **Do not merge this pull request.**
+A `feedback` pull request will be created automatically on your repository.
+Instructors will leave comments there. **Do not merge it.**
 
----
-
-## Reporting Issues
-
-If you could not solve part of the exercise, describe the problem in `experiences.md`.
-General questions should be posted to the course forum on **ILIAS**.
+If you could not solve part of the exercise, describe what you tried in `experiences.md`.
+General questions go to the course forum on ILIAS.
